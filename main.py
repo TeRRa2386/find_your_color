@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash, request
+from flask import Flask, render_template, url_for, request
 from PIL import Image
 from dotenv import load_dotenv
 import collections
