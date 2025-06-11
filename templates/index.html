@@ -1,0 +1,48 @@
+{% include 'header.html' %}
+{% include 'about.html' %}
+
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-7">
+
+            {% if image_url %}
+            <img src="{{ image_url }}" class="d-block mx-lg-auto img-fluid shadow-lg" alt="Bootstrap Themes" loading="lazy">
+            {% else %}
+            <img src="static/images/sample.jpg" class="d-block mx-lg-auto img-fluid shadow-lg" alt="Bootstrap Themes" loading="lazy">
+            {% endif %}
+
+        </div>
+        <div class="col-lg-5"><h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Find the colors you are looking for</h1>
+            <p class="lead">On this webpage, you can upload any picture you like and discover the top 10 colors in it. You can use this information in any
+                project or tool that works with HEX color codes. Enjoy!</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <form method="POST" enctype="multipart/form-data">
+                    <input type="file" class="form-control mt-3" id="inputGroupFile02" name="image" required>
+                    <button type="submit" class="btn btn-primary px-4 mt-3">Upload</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container pb-4">
+    {% if hex_codes %}
+    <div class="col-12 d-flex flex-wrap ms-5 ps-2">
+        <div class="justify-center pe-5">
+            <h3>There you go 🌈</h3>
+        </div>
+        <div class="row row row-cols-2 row-cols-sm-3 row-cols-md-5 me-5 pe-4">
+            {% for hex_code in hex_codes %}
+            <div class="col text-center p-3 border" style="background-color: {{ hex_code }};">{{ hex_code }}</div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <div class="col-12 text-center">
+        <h1>Waiting 😌</h1>
+    </div>
+    {% endif %}
+</div>
+
+
+{% include 'footer.html' %}
